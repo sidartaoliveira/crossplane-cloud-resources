@@ -1,0 +1,12 @@
+{
+  "project_name": "",
+  "dirname": "s3",
+  "tags": {
+	"VS": "infra",
+	"Environment": "production",
+	"Squad": "core-infra",
+	"Tier": "backend",
+	"Product": "dev-portal",
+	"App": "dev-portal"
+  }
+}
