@@ -1,0 +1,12 @@
+{
+  "project_name": "",
+  "dirname": "cache",
+  "tags": {
+	"VS": "infra",
+	"Environment": "production",
+	"Squad": "core-infra",
+	"Tier": "backend",
+	"Product": "dev-portal",
+	"App": "dev-portal"
+  }
+}

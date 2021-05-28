@@ -1,0 +1,12 @@
+{
+  "project_name": "",
+  "dirname": "registry",
+  "tags": {
+	"VS": "infra",
+	"Environment": "production",
+	"Squad": "core-infra",
+	"Tier": "backend",
+	"Product": "dev-portal",
+	"App": "dev-portal"
+  }
+}

@@ -1,0 +1,17 @@
+---
+apiVersion: ecr.aws.crossplane.io/v1alpha1
+kind: Repository
+metadata:
+  name: {{ project_name }}
+  namespace: {{ project_name }}
+spec:
+  forProvider:
+    name: {{ project_name }} 
+    imageScanningConfiguration:
+      scanOnPush: true
+    region: us-east-1
+    tags:
+{%- for key, value in cookiecutter.tags|dictsort %}
+      - key: {{ key }}
+        value: {{ value }}
+{%- endfor -%}

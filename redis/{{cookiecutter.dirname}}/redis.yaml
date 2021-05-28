@@ -1,0 +1,18 @@
+---
+apiVersion: cache.aws.crossplane.io/v1alpha1
+kind: CacheCluster
+metadata:
+  name: {{ cookiecutter.project_name }}
+  namespace: {{ cookiecutter.project_name }}
+spec:
+  forProvider:
+    name: {{ cookiecutter.project_name }}
+    cacheNodeType: cache.t2.micro
+    engine: redis
+    numCacheNodes: 1
+    region: us-east-1
+    tags:
+{%- for key, value in cookiecutter.tags|dictsort %}
+      - key: {{ key }}
+        value: {{ value }}
+{%- endfor -%}
