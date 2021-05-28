@@ -2,11 +2,11 @@
 apiVersion: ecr.aws.crossplane.io/v1alpha1
 kind: Repository
 metadata:
-  name: {{ project_name }}
-  namespace: {{ project_name }}
+  name: {{ cookiecutter.project_name }}
+  namespace: {{ cookiecutter.project_name }}
 spec:
   forProvider:
-    name: {{ project_name }} 
+    name: {{ cookiecutter.project_name }} 
     imageScanningConfiguration:
       scanOnPush: true
     region: us-east-1
