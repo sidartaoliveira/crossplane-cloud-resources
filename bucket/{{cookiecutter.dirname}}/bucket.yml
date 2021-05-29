@@ -1,0 +1,30 @@
+---
+apiVersion: s3.aws.crossplane.io/v1beta1
+kind: Bucket
+metadata:
+  name: {{ cookiecutter.project_name.lower() }}
+  namespace: {{ cookiecutter.project_name.lower() }} 
+spec:
+  forProvider:
+    locationConstraint: us-east-1
+    acl: public-read
+    websiteConfiguration:
+      errorDocument:
+        key: index.html
+      indexDocument:
+        suffix: index.html
+# FIXME - Even with v0.18.1 we need a fake routing rule to enable webSiteConfiguration
+# https://github.com/crossplane/provider-aws/issues/650
+      routingRules: 
+        - condition:
+            keyPrefixEquals: "redirme"
+          redirect:
+            keyPrefixEquals: "www.boticario.com.br"
+            replaceKeyWith: "perfumaria/"
+            protocol: https
+    tagging:
+      tagSet:
+{%- for key, value in cookiecutter.tags|dictsort %}
+        - key: {{ key }}
+          value: {{ value }}
+{%- endfor -%}
