@@ -13,7 +13,7 @@ spec:
         key: index.html
       indexDocument:
         suffix: index.html
-# FIXME - Even with v1.8.1 we need a fake routing rule to enable webSiteConfiguration
+# FIXME - Even with v0.18.1 we need a fake routing rule to enable webSiteConfiguration
 # https://github.com/crossplane/provider-aws/issues/650
       routingRules: 
         - condition:
