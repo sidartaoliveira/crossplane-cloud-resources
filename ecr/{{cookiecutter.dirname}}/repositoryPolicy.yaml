@@ -1,0 +1,33 @@
+---
+apiVersion: ecr.aws.crossplane.io/v1alpha1
+kind: RepositoryPolicy
+metadata:
+  name: {{ cookiecutter.project_name + '-policy' }}
+spec:
+  forProvider:
+    region: us-east-1
+    repositoryName: {{ cookiecutter.project_name.lower() }}
+    rawPolicy: |
+      {
+          "Version": "2008-10-17",
+          "Statement": [
+            {
+              "Sid": "AllowPushPull",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": [
+                  "arn:aws:iam::{{ cookiecutter.aws_account_id }}:root"
+                ]
+              },
+              "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:BatchGetImage",
+                "ecr:CompleteLayerUpload",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:InitiateLayerUpload",
+                "ecr:PutImage",
+                "ecr:UploadLayerPart"
+              ]
+            }
+          ]
+        }
