@@ -1,0 +1,26 @@
+apiVersion: cloudfront.aws.crossplane.io/v1alpha1
+kind: Distribution
+metadata:
+  name: {{ cookiecutter.project_name.lower() }}-distribution
+spec:
+  forProvider:
+    region: us-east-1
+    distributionConfig:
+      enabled: true
+      comment: Crossplane - auto provisioning
+      origins:
+        items:
+          - domainName: {{ cookiecutter.project_name.lower() }}.s3.amazonaws.com
+            id: s3Origin
+            s3OriginConfig:
+              originAccessIDentity: ""
+      defaultRootObject: "index.html"
+      defaultCacheBehavior:
+        targetOriginID: s3Origin
+        viewerProtocolPolicy: allow-all
+        minTTL: 0
+        forwardedValues:
+          cookies:
+            forward: none
+          queryString: false
+
